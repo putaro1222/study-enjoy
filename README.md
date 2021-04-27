@@ -2,17 +2,17 @@
 
 ## users テーブル
 
-| Column                      | Type   | Options                   |
-| --------------------------- | ------ | --------------------------|
-| nickname                    | string | null: false               |
-| email                       | string | null: false, unique: true |
-| encrypted_password          | string | null: false               |
-| child_name                  | string | null: false               |
-| child_name_kana             | string | null: false               |
-| child_birthday              | date   | null: false               |
-| parent_name                 | string | null: false               |
-| parent_name_kana            | string | null: false               |
-| parent_birthday             | date   | null: false               |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | --------------------------|
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| child_name         | string | null: false               |
+| child_name_kana    | string | null: false               |
+| child_birthday     | date   | null: false               |
+| parent_name        | string | null: false               |
+| parent_name_kana   | string | null: false               |
+| parent_birthday    | date   | null: false               |
 
 ### Association
 
@@ -23,12 +23,12 @@
 
 ## lectures テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| category_id   | integer    | null: false                    |
-| class_name    | string     | null: false                    |
-| class_info    | text       | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| category_id | integer    | null: false                    |
+| class_name  | string     | null: false                    |
+| class_info  | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -38,10 +38,10 @@
 
 ## studies テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| user          | references | null: false, foreign_key: true |
-| lecture    | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| lecture | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,4 +64,17 @@
 ### Association
 
 - belongs_to :user
+- has_one    :card
 
+
+## card テーブル
+
+| Column         | Type       | Options                        |
+| ---------------| ---------- | ------------------------------ |
+| card_token     | string     | null: false                    |
+| customer_token | string     | null: false                    |
+| address        | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :address
